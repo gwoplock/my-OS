@@ -440,7 +440,8 @@ ALL_EMULATION_SOURCES = \
 	exgateelf.c \
 	ez80.c \
 	ez8001.c \
-	ez8002.c
+	ez8002.c \
+	eelf_i386_exos.c
 
 ALL_EMULATIONS = $(ALL_EMULATION_SOURCES:.c=.@OBJEXT@)
 
@@ -521,7 +522,8 @@ ALL_64_EMULATION_SOURCES = \
 	eshelf64.c \
 	eshelf64_nbsd.c \
 	eshlelf64.c \
-	eshlelf64_nbsd.c
+	eshlelf64_nbsd.c \
+	eelf_x86_64_exos.c
 
 ALL_64_EMULATIONS = $(ALL_64_EMULATION_SOURCES:.c=.@OBJEXT@)
 
@@ -1333,6 +1335,11 @@ eelf32xtensa.c: $(srcdir)/emulparams/elf32xtensa.sh $(ELF_DEPS) \
 eelf_i386.c: $(srcdir)/emulparams/elf_i386.sh \
   $(ELF_X86_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
 
+# Add this after eelf_i386.c:
+eelf_i386_exos.c: $(srcdir)/emulparams/elf_i386_exos.sh \
+  $(ELF_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
+	${GENSCRIPTS} elf_i386_exos "$(tdir_elf_i386_exos)"
+
 eelf_i386_be.c: $(srcdir)/emulparams/elf_i386_be.sh \
   $(ELF_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
 
@@ -2031,6 +2038,10 @@ eelf_k1om_fbsd.c: $(srcdir)/emulparams/elf_k1om_fbsd.sh \
 
 eelf_x86_64.c: $(srcdir)/emulparams/elf_x86_64.sh \
   $(ELF_X86_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
+
+eelf_x86_64_exos.c: $(srcdir)/emulparams/elf_x86_64_exos.sh \
+  $(ELF_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
+	${GENSCRIPTS} elf_x86_64_exos "$(tdir_elf_x86_64_exos)"
 
 eelf_x86_64_cloudabi.c: $(srcdir)/emulparams/elf_x86_64_cloudabi.sh \
   $(srcdir)/emulparams/elf_x86_64.sh \
