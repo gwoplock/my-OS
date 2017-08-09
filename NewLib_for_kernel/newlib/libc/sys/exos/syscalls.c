@@ -11,6 +11,8 @@
 #undef errno
 extern int errno;
 
+void* sysCallHelper(int sysCallNum, void** args);
+
 void _exit( exitCode) {
 	void* args[] = {&exitCode};
 	syscallHelper(1, args);
@@ -85,7 +87,7 @@ int gettimeofday(struct timeval *p, struct timezone *z) {
 	void* args[] = { p, z };
 	return sysCallHelper(20, args);
 }
-
+//TODO check def of stuct stat
 int stat(const char *file, struct stat *st) {
 	void* args[] = { file, st };
 	return sysCallHelper(21, args);
