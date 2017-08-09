@@ -11,13 +11,8 @@
 extern int errno;
 
 void _exit(){
-	asm("cli");
-	while (true){
-		asm("hlt");
-	}
 }
 int close(int file){
-	return -1;
 }
 char *__env[1] = { 0 };
 char **environ = __env; /* pointer to array of char * strings that define the current environment variables */
