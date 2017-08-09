@@ -11,8 +11,8 @@
 #undef errno
 extern int errno;
 
-void _exit( ) {
-	void* args[] = { };
+void _exit( exitCode) {
+	void* args[] = {&exitCode};
 	syscallHelper(1, args);
 }
 int close(int file) {
