@@ -93,10 +93,6 @@ esac
 # THIS TABLE IS ALPHA SORTED.  KEEP IT THAT WAY.
 
 case "${host_cpu}" in
-  i[3-7]86-*-exos*)
-	sys_dir=exos
-	;;
-
   a29k)
 	machine_dir=a29k
 	;;
